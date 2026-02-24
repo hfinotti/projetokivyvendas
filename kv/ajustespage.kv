@@ -1,0 +1,75 @@
+<AjustesPage>:
+    FloatLayout:
+        # HEADER
+        canvas:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "icones/bg1.png"
+        Label:
+            canvas.before:
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+                    source: "icones/botao_fino.png"
+            pos_hint: {"right":0.85, "top":0.95}
+            size_hint: 0.7, 0.2
+            bold: True
+            text: "Seu ID Único: "
+            id: id_vendedor
+
+        # BODY
+        # mudar foto de perfil
+        ImageButton:
+            pos_hint: {"right":0.5, "top":0.7}
+            size_hint: 0.5, 0.15
+            source: "icones/foto_perfil.png"
+            text: "Mudar foto perfil"
+            on_release: app.mudar_tela("fotoperfilpage")
+        LabelButton:
+            pos_hint: {"right":0.9, "top":0.7}
+            size_hint: 0.5, 0.15
+            text: "Mudar foto perfil"
+            on_release: app.mudar_tela("fotoperfilpage")
+        # adicionar vendedor
+        ImageButton:
+            pos_hint: {"right":0.5, "top":0.5}
+            size_hint: 0.5, 0.15
+            source: "icones/adicionar_vendedor.png"
+            text: "Adicionar Venddedor"
+            on_release: app.mudar_tela("adicionarvendedorpage")
+        LabelButton:
+            pos_hint: {"right":0.9, "top":0.5}
+            size_hint: 0.5, 0.15
+            text: "Adicionar Venddedor"
+            on_release: app.mudar_tela("adicionarvendedorpage")
+        # acompanhar vendedor
+        ImageButton:
+            pos_hint: {"right":0.5, "top":0.3}
+            size_hint: 0.5, 0.15
+            source: "icones/vendas_empresa.png"
+            text: "Acompanhar Vendedor"
+            on_release: app.mudar_tela("listarvendedorespage")
+        LabelButton:
+            pos_hint: {"right":0.9, "top":0.3}
+            size_hint: 0.5, 0.15
+            text: "Acompanhar Vendedor"
+            on_release: app.mudar_tela("listarvendedorespage")
+
+        # FOOTER
+        FloatLayout:
+            pos_hint: {"right":1, "top":0.12}
+            size_hint: 1, 0.12
+            canvas:
+                Color:
+                    rgb: utils.get_color_from_hex("#006D7E")
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            ImageButton:
+                pos_hint: {"right":0.2, "top":0.9}
+                size_hint: 0.2, 0.8
+                source: "icones/voltar.png"
+                on_release: app.mudar_tela("homepage")
+
+

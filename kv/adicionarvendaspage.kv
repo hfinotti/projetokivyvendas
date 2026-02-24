@@ -1,0 +1,109 @@
+<AdicionarVendasPage>
+    FloatLayout:
+        # HEADER
+        canvas:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "icones/bg1.png"
+
+        # BODY
+        # SELECAO DO CLIENTE
+        Label:
+            pos_hint: {"right":1, "top":1}
+            size_hint: 1, 0.05
+            text: "Selecione o Cliente:"
+            id: label_selecione_cliente
+        ScrollView:
+            pos_hint: {"right":1, "top":0.95}
+            size_hint: 1, 0.13
+            GridLayout:
+                rows: 1
+                id: lista_clientes
+                size_hint_x: None
+                width: self.minimum_width
+                col_default_width: "100dp"
+                col_force_default: True
+        # SELECAO DO PRODUTO
+        Label:
+            pos_hint: {"right":1, "top":0.75}
+            size_hint: 1, 0.05
+            text: "Selecione o Produto:"
+            id: label_selecione_produto
+        ScrollView:
+            pos_hint: {"right":1, "top":0.7}
+            size_hint: 1, 0.13
+            GridLayout:
+                rows: 1
+                id: lista_produtos
+                size_hint_x: None
+                width: self.minimum_width
+                col_default_width: "100dp"
+                col_force_default: True
+        Label:
+            pos_hint: {"right":1, "top":0.5}
+            size_hint: 1, 0.05
+            text: "Data: 01/01/2021"
+            id: label_data
+            bold: True
+
+        # Selecione a Unidade
+        GridLayout:
+            rows: 1
+            pos_hint: {"right":0.9, "top":0.45}
+            size_hint: 0.8, 0.1
+            LabelButton:
+                text: "Kg"
+                id: unidades_kg
+                on_release: app.selecionar_unidade("unidades_kg")
+            LabelButton:
+                text: "Un"
+                id: unidades_un
+                on_release: app.selecionar_unidade("unidades_un")
+            LabelButton:
+                text: "Lt"
+                id: unidades_lt
+                on_release: app.selecionar_unidade("unidades_lt")
+        LabelButton:
+            canvas.before:
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+                    source: "icones/botao.png" if self.state == "normal" else "icones/botao_apertado.png"
+            pos_hint: {"right":0.45, "top":0.2}
+            size_hint: 0.4, 0.2
+            text: "Cancelar"
+            on_release: app.mudar_tela("homepage")
+        LabelButton:
+            canvas.before:
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+                    source: "icones/botao.png" if self.state == "normal" else "icones/botao_apertado.png"
+            pos_hint: {"right":0.95, "top":0.2}
+            size_hint: 0.4, 0.2
+            text: "Incluir Venda"
+            on_release: app.adicionar_venda()
+        # Digite o Preço
+        GridLayout:
+            pos_hint: {"right":0.9, "top":0.355}
+            size_hint: 0.8, 0.075
+            rows: 1
+            Label:
+                text: "Preço Total: R$"
+                id: label_preco
+            TextInput:
+                id: preco_total
+                hint_text: "Apenas números"
+        # Digite a Quantidade
+        GridLayout:
+            pos_hint: {"right":0.9, "top":0.275}
+            size_hint: 0.8, 0.075
+            rows: 1
+            Label:
+                text: "Quantidade Total:"
+                id: label_quantidade
+            TextInput:
+                id: quantidade_total
+                hint_text: "0"
+
